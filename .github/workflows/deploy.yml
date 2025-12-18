@@ -37,7 +37,9 @@ jobs:
 
       - name: Build and Push Container
         run: |-
-          gcloud builds submit --tag gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
+          gcloud builds submit --tag gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{ github.sha }} \
+            --suppress-logs \
+            --build-arg NEXT_PUBLIC_GOOGLE_SCRIPT_URL=${{ secrets.NEXT_PUBLIC_GOOGLE_SCRIPT_URL }}
 
       - name: Deploy to Cloud Run
         uses: google-github-actions/deploy-cloudrun@v2
