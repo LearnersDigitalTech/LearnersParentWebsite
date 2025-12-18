@@ -92,6 +92,17 @@ export default function HeroSection() {
                                 </Button>
                             </motion.div>
                         </Link>
+                        <Link href="https://math100.learnersdigital.com" target="_blank" className="w-full sm:w-auto">
+                            <motion.div
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="w-full"
+                            >
+                                <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 h-11 sm:h-12 px-6 sm:px-8 rounded-lg font-paragraph text-sm sm:text-base transition-all w-full sm:w-auto font-medium shadow-lg hover:shadow-xl">
+                                    Skill Builder
+                                </Button>
+                            </motion.div>
+                        </Link>
                     </motion.div>
                     <motion.blockquote
                         initial={{ opacity: 0, y: 20 }}
