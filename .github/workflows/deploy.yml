@@ -7,7 +7,6 @@ on:
       - master
 
 env:
-env:
   PROJECT_ID: learners-parent-website       # Hardcoded Project ID
   SERVICE_NAME: learners-parent-website     # Your Cloud Run Service Name
   REGION: us-central1                       # Your Region
