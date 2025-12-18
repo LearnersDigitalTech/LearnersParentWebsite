@@ -5,7 +5,8 @@ const nextConfig = {
       "static.wixstatic.com",
       "images.pexels.com"
     ]
-  }
+  },
+  output: "standalone"
 };
 
 export default nextConfig;
