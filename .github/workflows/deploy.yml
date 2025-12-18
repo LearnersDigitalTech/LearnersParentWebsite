@@ -7,7 +7,8 @@ on:
       - master
 
 env:
-  PROJECT_ID: ${{ secrets.PROJECT_ID }} # Setup this secret in GitHub
+env:
+  PROJECT_ID: learners-parent-website       # Hardcoded Project ID
   SERVICE_NAME: learners-parent-website     # Your Cloud Run Service Name
   REGION: us-central1                       # Your Region
 
@@ -37,9 +38,9 @@ jobs:
 
       - name: Build and Push Container
         run: |-
-          gcloud builds submit --tag gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{ github.sha }} \
-            --suppress-logs \
-            --build-arg NEXT_PUBLIC_GOOGLE_SCRIPT_URL=${{ secrets.NEXT_PUBLIC_GOOGLE_SCRIPT_URL }}
+          docker build -t gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{ github.sha }} \
+            --build-arg NEXT_PUBLIC_GOOGLE_SCRIPT_URL=${{ secrets.NEXT_PUBLIC_GOOGLE_SCRIPT_URL }} .
+          docker push gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
 
       - name: Deploy to Cloud Run
         uses: google-github-actions/deploy-cloudrun@v2
